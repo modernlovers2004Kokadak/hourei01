@@ -1,7 +1,7 @@
 const app=document.getElementById('app');
 const headerBack=document.getElementById('headerBack');
 const headerHome=document.getElementById('headerHome');
-const APP_VERSION='4.0.62';
+const APP_VERSION='4.0.64';
 const PROG_KEY='riyo_v05_prog';
 const BOOKMARK_KEY='riyoshi_lawbook_bookmarks_v1';
 const TODAY_KEY='riyoshi_lawbook_today10_v1';
@@ -287,7 +287,7 @@ function renderHome(){
       <div class="home-result-legend"><span class="correct">正答 ${all.correct}</span><span class="wrong">誤答 ${all.wrong}</span><span class="unanswered">未回答 ${all.unanswered}</span></div>
     </div></section>
     <div class="today-wrap"><button class="today-start" onclick="LawBook.startToday()"><span class="check">✓</span><span><strong>${todayTitle}</strong><small>${todayCaption}</small></span></button><button class="today-bookmarks" onclick="LawBook.openBookmarks()"><span>🔖</span><span class="count">${bookmarks.size}</span></button></div>
-    <div class="section-title-row"><h2 class="section-title">筆記試験科目</h2><a class="exam-guide-link" href="./preview.html?v=4.0.62">新制度による筆記試験実施要領</a></div>
+    <div class="section-title-row"><h2 class="section-title">筆記試験科目</h2><a class="exam-guide-link" href="./preview.html?v=4.0.64">新制度による筆記試験実施要領</a></div>
     <section class="subject-list">${SUBJECT_DEFS.map(subjectEntryHtml).join('')}</section>
     <section class="home-law-search">
       <label for="lawSearchInput">法令・条文・問題検索</label>
@@ -669,7 +669,7 @@ async function registerCurrentServiceWorker(){
         .filter(registration=>legacyScopes.includes(registration.scope))
         .map(registration=>registration.unregister()));
     }
-    const registration=await navigator.serviceWorker.register('./sw.js?v=4.0.62',{updateViaCache:'none'});
+    const registration=await navigator.serviceWorker.register('./sw.js?v=4.0.64',{updateViaCache:'none'});
     const activateWaitingWorker=()=>{
       if(registration.waiting)registration.waiting.postMessage({type:'SKIP_WAITING'});
     };

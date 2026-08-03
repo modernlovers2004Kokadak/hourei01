@@ -1387,6 +1387,7 @@ for(const question of [...QUESTIONS,...OFFICIAL_QUESTIONS]){
   if(question.id===105)question.choices=[correction.choices[0],...originalChoices.slice(1)];
 }
 
+
 const LAW_AUDIT_ARTICLE_LINKS={
   64:['感染症法 第2条','感染症法 第6条 第1項'],
   73:['感染症法 第6条 第8項','感染症法 第6条 第9項'],
@@ -13722,5 +13723,41 @@ for(const question of OFFICIAL_QUESTIONS){
     auditStatus:'reviewed',
     evidenceDate:'2026-08-02',
     evidenceNote:'問題文、全選択肢、正答、解説及び根拠を問題単位で監査済み'
+  });
+}
+
+// 過去問題一覧ページは個々の設問を裏付ける直接根拠として扱わない
+// 回・問題番号が特定されていない問題は、内容監査済みと証拠確定を区別する
+const PAST_QUESTION_LIST_LABEL='公益財団法人理容師美容師試験研修センター「過去の筆記試験問題」';
+const PAST_QUESTION_LIST_URL='https://www.rbc.or.jp/exam/past_question/';
+const removeUnspecifiedPastQuestionReference=value=>{
+  if(typeof value!=='string')return value;
+  return value
+    .replaceAll(`${PAST_QUESTION_LIST_LABEL}\n${PAST_QUESTION_LIST_URL}\n`,'')
+    .replaceAll(`${PAST_QUESTION_LIST_LABEL}\n${PAST_QUESTION_LIST_URL}`,'')
+    .replaceAll(`、${PAST_QUESTION_LIST_LABEL}`,'')
+    .replaceAll(`${PAST_QUESTION_LIST_LABEL}、`,'')
+    .replaceAll(PAST_QUESTION_LIST_LABEL,'')
+    .replaceAll(`\n${PAST_QUESTION_LIST_URL}`,'')
+    .replaceAll(PAST_QUESTION_LIST_URL,'')
+    .replace(/、{2,}/g,'、')
+    .trim();
+};
+for(const question of [...QUESTIONS,...OFFICIAL_QUESTIONS]){
+  if(!JSON.stringify(question).includes(PAST_QUESTION_LIST_LABEL))continue;
+  for(const key of ['exp','explanation','point','evidenceSource','currentLegalSource']){
+    question[key]=removeUnspecifiedPastQuestionReference(question[key]);
+  }
+  if(question.currentLegalReview?.公的資料){
+    question.currentLegalReview.公的資料=removeUnspecifiedPastQuestionReference(
+      question.currentLegalReview.公的資料
+    );
+  }
+  Object.assign(question,{
+    evidenceLevel:'B',
+    auditStatus:'reviewed',
+    evidenceDate:'2026-08-03',
+    evidenceNote:'問題文、全選択肢、正答及び解説は内容監査済み。過去問題は回・問題番号を特定できないため、一覧ページを直接根拠から除外',
+    pastQuestionReferenceStatus:'unverified'
   });
 }

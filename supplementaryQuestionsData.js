@@ -1,4 +1,4 @@
-// 不足領域を補う確定問題30問
+// 不足領域を補う確定問題60問
 // 既存の問題ID・保存データとの互換性を保つため、10073以降を使用する
 const SUPPLEMENTARY_SOURCE={
   curriculum:{name:'厚生労働省「理容師養成施設の教科課程の基準の運用について」',url:'https://www.mhlw.go.jp/content/11130500/001403710.pdf'},
