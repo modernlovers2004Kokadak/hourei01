@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>感染症法 一類〜五類 分類ガイド</title>
+<style>
+:root{
+  --navy:#10233f;
+  --nav:#073d86;
+  --bg:#f4f8fd;
+  --card:#ffffff;
+  --line:#dfe8f2;
+  --text:#10233f;
+  --muted:#62718a;
+  --red:#e8576f;
+  --coral:#e97d65;
+  --orange:#f08a24;
+  --green:#2f9f82;
+  --gray:#8a96a6;
+  --font-lv1:22px;
+  --font-lv2:20px;
+  --font-lv3:18px;
+  --font-lv4:16px;
+  --font-lv5:14px;
+}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif;
+  font-size:var(--font-lv4);
+  font-weight:400;
+  line-height:1.7;
+}
+button,a,summary{font:inherit}
+.g-nav{
+  position:sticky;
+  top:0;
+  z-index:30;
+  display:grid;
+  grid-template-columns:54px 1fr 54px;
+  align-items:center;
+  height:54px;
+  padding:0 8px;
+  background:var(--nav);
+  color:#fff;
+}
+.g-nav button,.g-nav a{
+  display:grid;
+  place-items:center;
+  width:100%;
+  height:44px;
+  padding:0;
+  border:0;
+  background:transparent;
+  color:#fff;
+  text-decoration:none;
+  font-size:var(--font-lv1);
+  line-height:1;
+  cursor:pointer;
+}
+.g-nav .g-title{
+  text-align:center;
+  font-size:18px;
+  font-weight:400;
+  line-height:normal;
+  overflow-wrap:anywhere;
+}
+.page-wrap{
+  width:min(100%,680px);
+  margin:0 auto;
+  padding:20px 14px 60px;
+}
+.infection-guide-title{
+  margin:0 0 16px;
+  color:var(--navy);
+  font-size:var(--font-lv2);
+  font-weight:400;
+  line-height:1.45;
+}
+.guide-section-title{
+  margin:20px 0 10px;
+  color:var(--navy);
+  font-size:var(--font-lv3);
+  font-weight:400;
+  line-height:1.45;
+}
+.guide-section-title.guide-emphasis{font-weight:600}
+.guide-section-title:first-of-type{margin-top:0}
+.priority-details{
+  margin:0 0 18px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:11px;
+  background:#fff;
+}
+.priority-details summary{
+  position:relative;
+  padding:12px 42px 12px 14px;
+  list-style:none;
+  color:var(--navy);
+  font-size:var(--font-lv3);
+  font-weight:400;
+  line-height:1.45;
+  cursor:pointer;
+}
+.priority-details summary::-webkit-details-marker{display:none}
+.priority-details summary::after{content:"＋";position:absolute;right:14px;top:50%;translate:0 -50%;font-size:22px;font-weight:400}
+.priority-details[open] summary::after{content:"−"}
+.priority-list{display:grid;gap:0;margin:0;padding:0 14px 12px}
+.priority-item{
+  width:100%;
+  padding:10px 0;
+  border:0;
+  border-top:1px solid var(--line);
+  background:#fff;
+  color:var(--text);
+  text-align:left;
+  cursor:pointer;
+  font-size:var(--font-lv4);
+  line-height:1.55;
+}
+.priority-item:first-child{border-top:0}
+.memory-guide{margin:0 0 18px;padding:13px 14px;border:1px solid #f0dfb7;border-radius:11px;background:#fff8e9}
+.memory-guide ul{margin:0;padding-left:1.3em}
+.memory-guide li{margin:3px 0}
+.memory-guide-note{margin:9px 0 0;color:var(--muted);font-size:var(--font-lv5);line-height:1.55}
+.infection-tier{
+  --tier-color:var(--gray);
+  margin:0 0 14px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:var(--card);
+  box-shadow:0 2px 10px rgba(16,35,63,.05);
+}
+.tier-1{--tier-color:var(--red)}
+.tier-2{--tier-color:var(--coral)}
+.tier-3{--tier-color:var(--orange)}
+.tier-4{--tier-color:var(--green)}
+.tier-5{--tier-color:var(--gray)}
+.infection-tier summary{
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto 18px;
+  align-items:center;
+  gap:10px;
+  min-height:56px;
+  padding:13px 14px 13px 16px;
+  list-style:none;
+  cursor:pointer;
+  background:var(--tier-color);
+  color:#fff;
+}
+.infection-tier summary::-webkit-details-marker{display:none}
+.infection-tier summary::after{
+  content:"＋";
+  font-size:22px;
+  line-height:1;
+  text-align:center;
+}
+.infection-tier[open] summary::after{content:"−"}
+.tier-head{display:flex;align-items:center;min-width:0;gap:10px}
+.tier-dot{
+  width:9px;
+  height:9px;
+  flex:0 0 auto;
+  border-radius:50%;
+  background:#fff;
+}
+.tier-name{
+  min-width:0;
+  font-size:var(--font-lv4);
+  font-weight:400;
+  line-height:1.4;
+}
+.tier-count{
+  font-size:var(--font-lv5);
+  font-weight:400;
+  white-space:nowrap;
+}
+.tier-body{
+  display:grid;
+  gap:12px;
+  padding:14px;
+  border-top:1px solid rgba(255,255,255,.25);
+}
+.info-block{
+  margin:0;
+  padding:13px 14px;
+  border:1px solid var(--line);
+  border-radius:11px;
+  background:#f8fbff;
+}
+.info-block.memory{
+  background:#fff8e9;
+  border-color:#f0dfb7;
+}
+.info-label{
+  display:block;
+  margin:0 0 5px;
+  font-size:var(--font-lv4);
+  font-weight:400;
+  line-height:1.4;
+}
+.info-block p{
+  margin:0;
+  font-size:var(--font-lv4);
+  font-weight:400;
+}
+.tier-group{
+  margin:0;
+  padding:13px 14px 14px;
+  border:1px solid var(--line);
+  border-radius:11px;
+  background:#fff;
+}
+.tier-group-title{
+  margin:0 0 9px;
+  color:var(--muted);
+  font-size:var(--font-lv4);
+  font-weight:400;
+  line-height:1.5;
+}
+.tier-diseases{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+.tier-diseases li{
+  padding:5px 10px;
+  border:1px solid color-mix(in srgb,var(--tier-color) 28%,#dfe8f2);
+  border-radius:999px;
+  background:color-mix(in srgb,var(--tier-color) 9%,#fff);
+  color:var(--text);
+  font-size:var(--font-lv5);
+  font-weight:400;
+  line-height:1.45;
+  cursor:pointer;
+  transition:background-color .15s ease;
+}
+.tier-disease-name{color:#000;font-weight:400;overflow-wrap:anywhere}
+.tier-disease-name.最重要,.tier-disease-name.重要,.tier-disease-name.低優先{color:#000}
+.tier-importance{display:block;margin-top:2px;color:#000;font-size:12px;font-weight:400;line-height:1.35}
+.tier-diseases li:active{background:#e5edf2}
+.tier-diseases li:focus-visible{outline:3px solid #f2a900;outline-offset:2px}
+.disease-modal[hidden]{display:none}
+.disease-modal{position:fixed;inset:0;z-index:1000;display:flex;align-items:flex-end;justify-content:center;padding:16px;background:rgba(10,24,38,.58)}
+.disease-dialog{width:min(100%,620px);max-height:88vh;overflow:auto;background:#fff;border-radius:18px 18px 12px 12px;box-shadow:0 16px 48px rgba(0,0,0,.3)}
+.disease-dialog-head{position:sticky;top:0;display:flex;align-items:flex-start;gap:12px;padding:18px 16px 12px;background:#fff;border-bottom:1px solid #dfe7eb}
+.disease-dialog-head h3{flex:1;margin:0;color:#12324a;font-size:20px;font-weight:400;line-height:1.45}
+.disease-close{flex:none;width:38px;height:38px;border:0;border-radius:50%;background:#e9eef2;color:#243746;font-size:25px;line-height:1;cursor:pointer}
+.disease-detail{margin:0;padding:14px 16px 20px}
+.disease-detail dt{margin-top:14px;color:#375266;font-size:16px;font-weight:400;line-height:1.45}
+.disease-detail dt.detail-emphasis{font-weight:600}
+.disease-detail dt:first-child{margin-top:0}
+.disease-detail dd{margin:3px 0 0;color:#182934;font-size:16px;line-height:1.7;overflow-wrap:anywhere}
+.importance{display:inline-block;padding:3px 10px;border-radius:999px;font-weight:400}
+.importance.最重要{color:#9b1c1c;background:#fee2e2}.importance.重要{color:#8a4b08;background:#fff1c7}.importance.低優先{color:#40566a;background:#e9eef2}
+@media(min-width:700px){.disease-modal{align-items:center}.disease-dialog{border-radius:18px}}
+@supports not (background:color-mix(in srgb,#000 10%,#fff)){
+  .tier-diseases li{background:#f2f5f9;border-color:var(--line)}
+}
+@media(max-width:520px){
+  .g-nav .g-title{font-size:16px}
+  .page-wrap{padding:16px 12px 48px}
+  .infection-guide-title{font-size:var(--font-lv2)}
+  .infection-tier summary{padding-left:14px}
+  .tier-body{padding:12px}
+}
+
+/* 対策要点ページの表示規則に合わせる */
+.infection-tier .tier-body{
+  gap:10px;
+  padding:5px 14px 16px;
+}
+.infection-tier .info-block{
+  margin:10px 0 0;
+  padding:8px 12px;
+  border:0;
+  border-left:5px solid #d9363e;
+  border-radius:10px;
+  background:#ffe8e8;
+}
+.infection-tier .info-block.memory{
+  margin-top:0;
+  border-left-color:#e5a900;
+  background:#fff3c4;
+}
+.infection-tier .info-label{
+  margin:0 0 2px;
+  font-size:16px;
+  font-weight:600;
+  line-height:1.45;
+}
+.infection-tier .info-block.memory .info-label{font-weight:600}
+.infection-tier .info-block p{
+  display:block;
+  font-size:16px;
+  font-weight:400;
+  line-height:1.65;
+}
+.infection-tier .tier-group{
+  margin:0;
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+}
+.infection-tier .tier-diseases{
+  display:block;
+  margin:0;
+  padding-left:20px;
+  list-style:disc;
+}
+.infection-tier .tier-diseases li{
+  margin:9px 0;
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  color:var(--text);
+  font-size:16px;
+  font-weight:400;
+  line-height:1.65;
+}
+.infection-tier .tier-disease-name{
+  display:block;
+  margin:0 0 2px;
+  color:#000;
+  font-weight:400;
+  line-height:1.45;
+}
+.infection-tier .tier-disease-name.最重要,
+.infection-tier .tier-disease-name.重要,
+.infection-tier .tier-disease-name.低優先{color:#000}
+.infection-tier .tier-importance{
+  display:block;
+  margin:0;
+  color:#000;
+  font-size:14px;
+  font-weight:400;
+  line-height:1.45;
+}
+.infection-tier .tier-diseases li:active{background:transparent}
+.infection-tier .tier-group-title{
+  margin:12px 0 3px;
+  color:var(--navy);
+  font-size:16px;
+  font-weight:400;
+  line-height:1.45;
+}
+.infection-tier .tier-group:first-of-type .tier-group-title{margin-top:0}
+</style>
+</head>
+<body>
+<nav class="g-nav"><button aria-label="戻る" onclick="history.length&gt;1?history.back():location.href='index.html'" type="button">‹</button><span class="g-title">感染症法 一類〜五類 分類ガイド</span><a aria-label="ホームへ戻る" href="index.html">⌂</a></nav>
+<div class="page-wrap" data-dictionary-content>
+<section class="infection-guide">
+<h3 class="guide-section-title guide-emphasis">一類〜五類の覚え方</h3>
+<div class="memory-guide">
+<ul>
+<li>一類：危険性が極めて高い</li>
+<li>二類：重篤な呼吸器感染症が中心</li>
+<li>三類：飲食物を扱う業務などの就業制限</li>
+<li>四類：動物・昆虫・環境などから感染</li>
+<li>五類：幅広い感染症の発生動向を把握</li>
+</ul>
+<p class="memory-guide-note">分類の傾向をつかむための覚え方で、すべての疾病に完全一致する規則ではありません</p>
+</div>
+<details class="priority-details">
+<summary>★★★★★ 最重要感染症</summary>
+<div class="priority-list" id="priorityList"></div>
+</details>
+<h3 class="guide-section-title">一類〜五類の全疾病一覧</h3>
+<details class="infection-tier tier-1" open="">
+<summary>
+<span class="tier-head"><span class="tier-dot"></span><span class="tier-name">一類感染症</span></span>
+<span class="tier-count">7疾患</span>
+</summary>
+<div class="tier-body">
+<div class="info-block"><span class="info-label">【対応】</span><p>必要に応じて入院勧告・措置、消毒などを行い、交通制限等の措置も可能な最も厳格な類型</p></div>
+<div class="info-block memory"><span class="info-label">【覚え方】</span><p>7疾患中5つは病名に「熱」がつく。例外は「痘そう」と「ペスト」の2つだけ</p></div>
+<section class="tier-group"><ul class="tier-diseases">
+<li>エボラ出血熱</li>
+<li>クリミア・コンゴ出血熱</li>
+<li>痘そう</li>
+<li>南米出血熱</li>
+<li>ペスト</li>
+<li>マールブルグ病</li>
+<li>ラッサ熱</li>
+</ul></section>
+</div>
+</details>
+<details class="infection-tier tier-2" open="">
+<summary>
+<span class="tier-head"><span class="tier-dot"></span><span class="tier-name">二類感染症</span></span>
+<span class="tier-count">7疾患</span>
+</summary>
+<div class="tier-body">
+<div class="info-block"><span class="info-label">【対応】</span><p>必要に応じて入院勧告・措置、就業制限、消毒などを行う。一類のような交通制限等は行わない</p></div>
+<div class="info-block memory"><span class="info-label">【覚え方】</span><p>ポリオ以外は全て呼吸器の重症感染症。「呼吸器グループ＋例外1つ」で覚える</p></div>
+<section class="tier-group"><ul class="tier-diseases">
+<li>急性灰白髄炎</li>
+<li>結核</li>
+<li>ジフテリア</li>
+<li>重症急性呼吸器症候群</li>
+<li>中東呼吸器症候群</li>
+<li>鳥インフルエンザ（Ｈ５Ｎ１）</li>
+<li>鳥インフルエンザ（Ｈ７Ｎ９）</li>
+</ul></section>
+</div>
+</details>
+<details class="infection-tier tier-3" open="">
+<summary>
+<span class="tier-head"><span class="tier-dot"></span><span class="tier-name">三類感染症</span></span>
+<span class="tier-count">5疾患</span>
+</summary>
+<div class="tier-body">
+<div class="info-block"><span class="info-label">【対応】</span><p>特定の業務への就業制限や消毒などを行う。飲食物を直接扱う業務との関係が重要</p></div>
+<div class="info-block memory"><span class="info-label">【覚え方】</span><p>全て消化器系（お腹）の感染症。「腸チフス・パラチフス」は名前が似ていてもどちらも三類なのでセットで覚えてよい</p></div>
+<section class="tier-group"><ul class="tier-diseases">
+<li>コレラ</li>
+<li>細菌性赤痢</li>
+<li>腸管出血性大腸菌感染症</li>
+<li>腸チフス</li>
+<li>パラチフス</li>
+</ul></section>
+</div>
+</details>
+<details class="infection-tier tier-4" open="">
+<summary>
+<span class="tier-head"><span class="tier-dot"></span><span class="tier-name">四類感染症</span></span>
+<span class="tier-count">44疾患</span>
+</summary>
+<div class="tier-body">
+<div class="info-block"><span class="info-label">【対応】</span><p>動物・飲食物などを介して人へ感染する疾病を含み、動物への措置や消毒などの対物措置が中心</p></div>
+<div class="info-block memory"><span class="info-label">【覚え方】</span><p>約半数が蚊・ダニなど昆虫媒介。聞き慣れない「〇〇熱」「〇〇脳炎」は四類の可能性が高い</p></div>
+<section class="tier-group"><p class="tier-group-title">動物由来（人畜共通感染症）</p><ul class="tier-diseases">
+<li>狂犬病</li><li>キュー熱</li><li>オウム病</li><li>ブルセラ症</li><li>炭疽</li>
+<li>レプトスピラ症</li><li>ビーウイルス病</li><li>野兎病</li><li>鼻疽</li><li>類鼻疽</li>
+<li>鳥インフルエンザ（Ｈ５Ｎ１・Ｈ７Ｎ９を除く）</li>
+</ul></section>
+
+<section class="tier-group"><p class="tier-group-title">蚊・ダニなど昆虫が媒介するもの</p><ul class="tier-diseases">
+<li>デング熱</li><li>マラリア</li><li>日本脳炎</li><li>ジカウイルス感染症</li>
+<li>チクングニア熱</li><li>リフトバレー熱</li><li>ウエストナイル熱</li>
+<li>ダニ媒介脳炎</li><li>つつが虫病</li><li>日本紅斑熱</li><li>ロッキー山紅斑熱</li>
+<li>重症熱性血小板減少症候群</li><li>回帰熱</li><li>発しんチフス</li>
+<li>東部ウマ脳炎</li><li>西部ウマ脳炎</li><li>ベネズエラウマ脳炎</li><li>ライム病</li>
+</ul></section>
+
+<section class="tier-group"><p class="tier-group-title">一類ではない「出血熱」グループ</p><ul class="tier-diseases">
+<li>オムスク出血熱</li><li>キャサヌル森林病</li><li>腎症候性出血熱</li><li>ハンタウイルス肺症候群</li>
+</ul></section>
+
+<section class="tier-group"><p class="tier-group-title">その他（水・土壌・食品などが由来）</p><ul class="tier-diseases">
+<li>Ａ型肝炎</li><li>Ｅ型肝炎</li><li>黄熱</li><li>コクシジオイデス症</li>
+<li>レジオネラ症</li><li>エキノコックス症</li><li>エムポックス</li><li>ボツリヌス症</li>
+<li>ニパウイルス感染症</li><li>ヘンドラウイルス感染症</li><li>リッサウイルス感染症</li>
+</ul></section>
+
+</div>
+</details>
+<details class="infection-tier tier-5" open="">
+<summary>
+<span class="tier-head"><span class="tier-dot"></span><span class="tier-name">五類感染症</span></span>
+<span class="tier-count">51疾患</span>
+</summary>
+<div class="tier-body">
+<div class="info-block"><span class="info-label">【対応】</span><p>全数または定点で発生動向を把握し、必要な情報提供や感染拡大防止に役立てる</p></div>
+<div class="info-block memory"><span class="info-label">【覚え方】</span><p>一類〜四類（約60疾患）をしっかり覚えれば、残りは基本的に五類という消去法が成立する</p></div>
+<section class="tier-group"><p class="tier-group-title">子どもがよくかかる身近な感染症</p><ul class="tier-diseases">
+<li>インフルエンザ</li><li>水痘</li><li>水痘（入院例）</li><li>流行性耳下腺炎</li>
+<li>麻しん</li><li>風しん</li><li>先天性風しん症候群</li><li>手足口病</li>
+<li>ヘルパンギーナ</li><li>伝染性紅斑</li><li>咽頭結膜熱</li><li>突発性発しん</li>
+<li>百日咳</li><li>ＲＳウイルス感染症</li><li>Ａ群溶血性レンサ球菌咽頭炎</li>
+<li>感染性胃腸炎（ノロウイルス）</li><li>感染性胃腸炎（ロタウイルス）</li>
+</ul></section>
+
+<section class="tier-group"><p class="tier-group-title">性感染症</p><ul class="tier-diseases">
+<li>性器クラミジア感染症</li><li>性器ヘルペスウイルス感染症</li><li>淋菌感染症</li>
+<li>尖圭コンジローマ</li><li>梅毒</li><li>エイズ</li>
+</ul></section>
+
+<section class="tier-group"><p class="tier-group-title">薬剤耐性菌グループ</p><ul class="tier-diseases">
+<li>メチシリン耐性黄色ブドウ球菌感染症</li><li>バンコマイシン耐性黄色ブドウ球菌感染症</li>
+<li>バンコマイシン耐性腸球菌感染症</li><li>ペニシリン耐性肺炎球菌感染症</li>
+<li>多剤耐性緑膿菌感染症</li><li>薬剤耐性アシネトバクター感染症</li>
+<li>カルバペネム耐性腸内細菌目細菌感染症</li>
+</ul></section>
+
+<section class="tier-group"><p class="tier-group-title">「侵襲性」がつく重症感染症</p><ul class="tier-diseases">
+<li>侵襲性インフルエンザ菌感染症</li><li>侵襲性肺炎球菌感染症</li><li>侵襲性髄膜炎菌感染症</li>
+</ul></section>
+
+<section class="tier-group"><p class="tier-group-title">神経系の合併症グループ</p><ul class="tier-diseases">
+<li>急性脳炎</li><li>無菌性髄膜炎</li><li>細菌性髄膜炎</li><li>急性弛緩性麻痺</li>
+<li>クロイツフェルト・ヤコブ病</li>
+</ul></section>
+
+<section class="tier-group"><p class="tier-group-title">その他</p><ul class="tier-diseases">
+<li>新型コロナウイルス感染症</li><li>破傷風</li><li>アメーバ赤痢</li><li>ジアルジア症</li>
+<li>クリプトスポリジウム症</li><li>播種性クリプトコックス症</li><li>急性出血性結膜炎</li>
+<li>流行性角結膜炎</li><li>クラミジア肺炎</li><li>マイコプラズマ肺炎</li>
+<li>劇症型溶血性レンサ球菌感染症</li><li>急性呼吸器感染症</li><li>ウイルス性肝炎</li>
+</ul></section>
+
+</div>
+</details>
+</section>
+</div>
+<div class="disease-modal" id="diseaseModal" hidden>
+  <article class="disease-dialog" role="dialog" aria-modal="true" aria-labelledby="diseaseTitle">
+    <header class="disease-dialog-head"><h3 id="diseaseTitle"></h3><button class="disease-close" type="button" aria-label="閉じる">×</button></header>
+    <dl class="disease-detail" id="diseaseDetail"></dl>
+  </article>
+</div>
+<script src="infectionDiseaseData.js?v=3.0.188"></script>
+<script>
+(()=>{
+  const modal=document.getElementById('diseaseModal'),dialog=modal.querySelector('.disease-dialog'),title=document.getElementById('diseaseTitle'),detail=document.getElementById('diseaseDetail');
+  const diseases=globalThis.INFECTION_DISEASE_DATA?.diseases||[];
+  const byName=new Map(diseases.map(item=>[item.name,item]));
+  const displayText=value=>String(value||'').replace(/[Ａ-Ｚａ-ｚ０-９]/g,ch=>String.fromCharCode(ch.charCodeAt(0)-0xFEE0));
+  const escapeHtml=value=>displayText(value).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+  let lastFocus=null;
+  function close(){modal.hidden=true;document.body.style.overflow='';lastFocus?.focus()}
+  function open(item,trigger){lastFocus=trigger;title.textContent=displayText(`${item.name}｜${item.route}`);detail.innerHTML=`
+    <dt>正式名称</dt><dd>${escapeHtml(item.name)}</dd>
+    <dt>別名・通称</dt><dd>${escapeHtml(item.alias||'なし')}</dd>
+    <dt>感染症法上の分類</dt><dd>${escapeHtml(item.classification)}</dd>
+    <dt>主な感染経路</dt><dd>${escapeHtml(item.route)}</dd>
+    ${Array.isArray(item.symptoms)&&item.symptoms.length?`<dt>代表的・特徴的な症状</dt><dd>${item.symptoms.map(value=>`・${escapeHtml(value)}`).join('<br>')}</dd>`:''}
+    ${item.exam?`<dt class="detail-emphasis">国家試験の要点</dt><dd>${escapeHtml(item.exam)}</dd>`:''}
+    ${item.mixup?`<dt class="detail-emphasis">混同注意</dt><dd>${escapeHtml(item.mixup)}</dd>`:''}
+    <dt>重要度</dt><dd><span class="importance ${escapeHtml(item.importance)}">${escapeHtml(item.importance)}</span></dd>`;
+    modal.hidden=false;document.body.style.overflow='hidden';modal.querySelector('.disease-close').focus();
+  }
+  document.querySelectorAll('.tier-diseases li').forEach(li=>{const item=byName.get(li.textContent.trim());if(!item)return;li.replaceChildren();const name=document.createElement('span');name.className=`tier-disease-name ${item.importance}`;name.append(document.createTextNode(displayText(item.name)),document.createElement('br'),document.createTextNode(displayText(`※${item.route}`)));const importance=document.createElement('span');importance.className='tier-importance';importance.textContent=item.importance==='最重要'?'★★★★★':item.importance==='重要'?'★★★★':'★★★';li.append(name,importance);li.tabIndex=0;li.setAttribute('role','button');li.setAttribute('aria-label',`${displayText(item.name)}の詳細を開く`);li.addEventListener('click',()=>open(item,li));li.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open(item,li)}})});
+  const priorityList=document.getElementById('priorityList');
+  diseases.filter(item=>item.importance==='最重要').forEach(item=>{const button=document.createElement('button');button.type='button';button.className='priority-item';button.append(document.createTextNode(item.name),document.createElement('br'),document.createTextNode(`※${item.route}`));button.addEventListener('click',()=>open(item,button));priorityList.append(button)});
+  modal.querySelector('.disease-close').addEventListener('click',close);modal.addEventListener('click',e=>{if(e.target===modal)close()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden)close()});
+  let swipeStartX=0,swipeStartY=0,swipeStartedAtTop=false,swipeTracking=false,swipeLocked=false;
+  dialog.addEventListener('touchstart',e=>{if(e.touches.length!==1||swipeLocked)return;const touch=e.touches[0];swipeStartX=touch.clientX;swipeStartY=touch.clientY;swipeStartedAtTop=dialog.scrollTop<=1;swipeTracking=true},{passive:true});
+  dialog.addEventListener('touchcancel',()=>{swipeTracking=false},{passive:true});
+  dialog.addEventListener('touchend',e=>{if(!swipeTracking||swipeLocked)return;swipeTracking=false;const touch=e.changedTouches[0];if(!touch||!swipeStartedAtTop)return;const dx=touch.clientX-swipeStartX,dy=touch.clientY-swipeStartY;if(dy<90||dy<=Math.abs(dx)*1.25)return;swipeLocked=true;close();setTimeout(()=>{swipeLocked=false},400)},{passive:true});
+})();
+</script>
+<script src="glossaryData.js?v=3.0.188"></script>
+<script src="glossaryQuizData.js?v=3.0.188"></script>
+<script src="cultureManagementData.js?v=3.0.188"></script>
+<script src="comprehensiveSupplementData.js?v=3.0.188"></script>
+<script src="dictionaryPage.js?v=3.0.188"></script>
+</body>
+</html>

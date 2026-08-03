@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
+<title>理容師国家試験 筆記試験 完全対策要点 全章初期展開版</title>
+<style>
+:root{
+  --green:#075f49;--green2:#e8f5f0;--bg:#f3f5f7;--text:#202428;
+  --memory:#fff3c4;--memory-border:#e5a900;
+  --point:#ffe8e8;--point-border:#d9363e;
+  --trap:#e8f3ff;--trap-border:#1976d2;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN",
+  "Hiragino Sans","Yu Gothic",Meiryo,sans-serif;
+  line-height:1.7;-webkit-text-size-adjust:100%;
+}
+.g-nav{position:sticky;top:0;z-index:30;display:grid;grid-template-columns:54px 1fr 54px;align-items:center;height:54px;padding:0 8px;background:#073d86;color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.18)}.g-nav button,.g-nav a{display:grid;place-items:center;width:100%;height:44px;padding:0;border:0;background:transparent;color:#fff;text-decoration:none;font:inherit;font-size:22px;line-height:1;cursor:pointer}.g-nav .g-title{text-align:center;font-size:18px;font-weight:400;line-height:1.25}
+main{max-width:760px;margin:auto;padding:12px 12px calc(24px + env(safe-area-inset-bottom))}
+.legend{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:2px 0 12px;
+}
+.legend div{border-radius:9px;padding:8px 4px;text-align:center;font-size:14px;font-weight:500}
+.legend .m{background:var(--memory);border:1px solid var(--memory-border)}
+.legend .p{background:var(--point);border:1px solid var(--point-border)}
+.legend .t{background:var(--trap);border:1px solid var(--trap-border)}
+details{
+  background:#fff;border-radius:14px;margin:11px 0;overflow:hidden;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+summary{
+  cursor:pointer;padding:15px 42px 15px 15px;font-weight:500;font-size:18px;
+  color:#fff;background:var(--green);position:relative;list-style:none;
+}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"＋";position:absolute;right:15px;top:50%;transform:translateY(-50%);font-size:22px}
+details[open] summary::after{content:"−"}
+.sec{padding:5px 14px 16px}
+h2{font-size:18px;color:var(--green);margin:18px 0 8px;border-bottom:2px solid var(--green2);padding-bottom:5px}
+.infection-section-title{font-size:18px;font-weight:400;}
+h3{font-size:16px;margin:14px 0 7px}
+ul,ol{padding-left:22px;margin:7px 0}
+li{margin:6px 0}
+strong{font-weight:500}
+.box{
+  margin:10px 0;padding:11px 12px;border-radius:10px;position:relative;
+  font-size:16px;font-weight:500;
+}
+.box::before{display:none}
+.memory{background:var(--memory);border-left:5px solid var(--memory-border);padding-top:8px;padding-bottom:8px}
+.memory::before{content:"覚"}
+.point{background:var(--point);border-left:5px solid var(--point-border);padding-top:8px;padding-bottom:8px}
+.point::before{content:"要"}
+.trap{background:var(--trap);border-left:5px solid var(--trap-border)}
+.trap::before{content:"注"}
+.num{font-weight:600;color:#b42318}
+.small{font-size:14px;color:#5e666d}
+footer{text-align:center;color:#687078;font-size:14px;padding:12px}
+@media(max-width:380px){header{font-size:16px}
+  summary{font-size:16px}
+  .legend div{font-size:14px}
+}
+
+
+/* Requested color and label scheme */
+main > details > summary{background:#073D86;color:#fff;}
+.memory{background:#fff3c4;border-left:5px solid #e5a900;}
+.point{background:#ffe8e8;border-left:5px solid #d9363e;}
+.trap{background:#e8f3ff;border-left:5px solid #1976d2;}
+@media(max-width:380px){
+  header{font-size:16px;}
+}
+
+
+
+.exam-note-card{
+  margin:16px 0;
+  border:2px solid #2E5F98;
+  border-radius:12px;
+  overflow:hidden;
+  background:#f7fbff;
+}
+.exam-note-title{
+  background:#2E5F98;
+  color:#fff;
+  padding:10px 14px;
+  font-weight:500;
+  font-size:16px;
+}
+.exam-note-body{
+  padding:12px 14px;
+}
+.exam-note-body > :first-child{
+  margin-top:0;
+}
+.exam-note-body > :last-child{
+  margin-bottom:0;
+}
+
+/* スマホ向け：項目名と説明を改行して読みやすくする */
+.sec li > strong:first-child{
+  display:block;
+  margin:0 0 2px;
+  line-height:1.45;
+}
+.sec li{
+  line-height:1.65;
+}
+@media(max-width:560px){
+  .sec ul,.sec ol{padding-left:20px;}
+  .sec li{margin:9px 0;}
+}
+
+/* 太字の使用を重要ラベルと重要数値に限定 */
+.box{font-weight:400;}
+.box-title{font-weight:500;display:block;margin-bottom:6px;}
+.item-title{font-weight:400;}
+
+/* v3.0.61 typography system */
+:root{--font-lv1:22px;--font-lv2:20px;--font-lv3:18px;--font-lv4:16px;--font-lv5:14px;}
+body{font-size:var(--font-lv4);}
+.g-nav .g-title{font-size:18px;font-weight:400;line-height:normal;}
+@media(max-width:440px){.g-nav .g-title{font-size:16px;}}
+header{font-size:var(--font-lv2);}
+summary,
+h2,
+h3{font-size:var(--font-lv3);font-weight:400;}
+.box,
+.box-title,
+.exam-note-title{font-size:var(--font-lv4);}
+.small,
+footer,
+.legend div{font-size:var(--font-lv5);}
+
+
+.sec h2{font-weight:500;}
+.item-title{display:block;margin:0 0 2px;line-height:1.45;font-weight:500}
+.item-text{display:block}
+
+</style>
+</head>
+<body>
+<nav class="g-nav"><button aria-label="戻る" onclick="history.length&gt;1?history.back():location.href='index.html'" type="button">‹</button><span class="g-title">対策要点</span><a aria-label="ホームへ戻る" href="index.html">⌂</a></nav>
+<main data-dictionary-content>
+<details open=""><summary>1．関係法規・制度 ＆ 運営管理（10問）</summary><div class="sec"><h2>理容師法・開設</h2>
+<ul>
+<li><span class="item-title">開設手続き</span><span class="item-text">理容所を開設するときは、<span class="num">あらかじめ</span>都道府県知事へ届け出る（実務上の窓口は保健所）</span></li>
+<li><span class="item-title">名簿の訂正・免許証の書換え</span><span class="item-text"><span class="num">氏名や本籍地</span><span class="num">都道府県名など</span><span class="num">が変わったら、</span><span class="num">30日以内</span>に名簿の訂正を申請する。免許証の記載事項に変更がある場合は、免許証の書換え交付を申請できる</span></li>
+</ul><div class="trap box"><span class="num">【混同注意】</span>名簿訂正は30日以内。免許証の書換え交付には「30日以内」の期限はない</div><ul>
+<li><span class="item-title">構造設備基準</span><span class="item-text">作業面の照度は<span class="num">100ルクス以上</span>。待合所と作業場は<span class="num">明確に区分</span>する</span></li>
+<li><span class="item-title">免許</span><span class="item-text"><span class="num">厚生労働大臣</span>が与える。名簿訂正が必要なのは氏名・本籍地都道府県名などの変更で、<span class="num">住所変更だけでは対象外</span></span></li>
+<li><span class="item-title">業務停止</span><span class="item-text">理容師が<span class="num">伝染性</span><span class="num">の疾病</span>にかかり、業務を続けると公衆衛生上支障がある場合、期間を定めて<span class="num">業務停止</span>となる</span></li>
+<li><span class="item-title">管理理容師</span><span class="item-text">理容師が<span class="num">常時2人以上</span>いる理容所では選任が必要。<span class="num">3年以上</span><span class="num">の実務経験＋指定講習修了</span>が要件</span></li>
+<li><span class="item-title">開設後の検査</span><span class="item-text">開設届後、構造設備が基準に適合するか検査を受け、<span class="num">確認後</span>でなければ使用できない</span></li>
+</ul><div class="trap box"><span class="num">【混同注意】</span>開設届だけでは使用できない。構造設備の検査・確認後に使用できる</div><ul>
+<li><span class="item-title">変更・廃止</span><span class="item-text">開設者、所在地、構造設備、管理理容師などに変更があった場合や廃止した場合は<span class="num">届出が必要</span></span></li>
+<li><span class="item-title">罰則</span><span class="item-text">無免許営業、無届開設、業務停止命令違反、検査拒否などは罰則・行政処分の対象</span></li>
+</ul>
+<h2>消費者基本法</h2>
+<ul>
+<li><span class="item-title">理念</span><span class="item-text">消費者の権利の尊重と自立支援を基本とする</span></li>
+</ul>
+<h2>運営管理</h2>
+<ul>
+<li><span class="item-title">接客</span><span class="item-text">第一印象、身だしなみ、あいさつ、言葉づかい、傾聴、苦情対応が基本。施術前の要望確認と説明不足防止が重要</span></li>
+<li><span class="item-title">経営</span><span class="item-text">売上＝客数×客単価。固定費・変動費、損益分岐点、原価管理、再来店率、顧客管理を押さえる</span></li>
+<li><span class="item-title">労務</span><span class="item-text">労働時間、休憩、休日、賃金、労働契約、就業規則、安全配慮義務を確認。労働災害防止も管理者の責務</span></li>
+<li><span class="item-title">社会保険・雇用保険</span><span class="item-text">健康保険、厚生年金保険、労災保険、雇用保険などの基本を確認。従業員を雇用する場合は加入・手続き・保険料管理が重要</span></li>
+<li><span class="item-title">経理事務</span><span class="item-text">売上・仕入・経費の記録、帳簿管理、領収書保存、税務申告に関する基本事項を押さえる</span></li>
+<li><span class="item-title">衛生管理体制</span><span class="item-text">器具消毒、手指衛生、清掃、換気、廃棄物管理、従業員教育、記録管理を店舗全体で継続する</span></li>
+</ul>
+<h2>健康増進法・公衆衛生</h2>
+<ul>
+<li><span class="item-title">受動喫煙防止</span><span class="item-text">理容所は原則屋内禁煙。違反には過料がある</span></li>
+<li><span class="item-title">健康日本21</span><span class="item-text">健康寿命の延伸と健康格差の縮小</span></li>
+<li><span class="item-title">国民健康・栄養調査</span><span class="item-text">厚生労働省が実施する調査</span></li>
+<li><span class="item-title">公衆衛生</span><span class="item-text">集団の健康保持・増進、疾病予防、生活環境の改善を目的とする。<span class="num">一次予防・二次予防・三次予防</span>を区別</span></li>
+<li><span class="item-title">環境衛生</span><span class="item-text">空気、水、廃棄物、騒音、住居、営業施設の衛生管理。理容所では<span class="num">換気・採光・照明・清掃</span>が頻出</span></li>
+<li><span class="item-title">人口統計</span><span class="item-text">出生率、死亡率、<span class="num">乳児死亡率</span>、平均寿命、健康寿命、年齢構成を確認。<span class="num">少子高齢化</span>と疾病構造の変化が重要</span></li>
+<li><span class="item-title">母子保健</span><span class="item-text">妊産婦・乳幼児の健康保持を目的とし、母子健康手帳、乳幼児健診、予防接種、低出生体重児対策を押さえる</span></li>
+<li><span class="item-title">生活習慣病</span><span class="item-text">がん、循環器病、糖尿病、脂質異常症、高血圧、歯周病など。食生活、運動、喫煙、飲酒、休養が予防の中心</span></li>
+</ul></div></details>
+<details open=""><summary>2．衛生管理（15問）</summary><div class="sec"><h2>感染症の予防</h2>
+<ul>
+<li><span class="item-title">感染源対策</span><span class="item-text">器具の消毒、患者の隔離、害虫駆除</span></li>
+<li><span class="item-title">感染経路対策</span><span class="item-text">手洗い、マスク、換気、器具消毒を中心に行う</span></li>
+<li><span class="item-title">感受性宿主対策</span><span class="item-text">予防接種、栄養、睡眠</span></li>
+</ul>
+<h2>消毒法</h2>
+<ul>
+<li><span class="item-title">エタノール</span><span class="item-text">①かみそり、および血液が付着した疑いのある器具＝76.9〜81.4％のエタノール水溶液に10分間以上浸漬</span></li>
+<li><span class="item-title">②血液<span class="num">非</span>付着器具＝同濃度のエタノールを含ませた綿・ガーゼで<span class="num">清拭（時間指定なし）</span></span><span class="item-text"><span class="num">【混同注意】</span>かみそりは、血液付着の有無にかかわらず消毒法が限定される</span></li>
+<li><span class="item-title">グルコン酸クロルヘキシジン</span><span class="item-text">かみそり、および血液が付着した疑いのある器具には使用不可。一般器具用の消毒薬として整理（かみそり、および血液が付着した疑いのある器具の消毒法はエタノール浸漬・煮沸・次亜塩素酸ナトリウムの3つに限る）</span></li>
+<li><span class="item-title">塩化ベンザルコニウム・塩化ベンゼトニウム（逆性石けん）</span><span class="item-text">血液汚染には用いない</span></li>
+<li><span class="item-title">煮沸消毒</span><span class="item-text"><span class="num">沸騰してから2分間以上</span></span></li>
+<li><span class="item-title">紫外線消毒</span><span class="item-text"><span class="num">85マイクロワット毎平方センチメートル以上で20分間以上</span></span></li>
+</ul></div></details>
+<details open=""><summary>3．保健（10問）</summary><div class="sec"><h2>解剖生理</h2>
+<ul>
+<li><span class="item-title">交感神経</span><span class="item-text">心拍数上昇、瞳孔散大、消化運動抑制</span></li>
+<li><span class="item-title">副交感神経</span><span class="item-text">心拍数低下、消化運動促進</span></li>
+</ul><div class="trap box"><span class="num">【混同注意】</span>交感神経は活動時、副交感神経は安静時に優位になる。作用を逆にしない</div><ul>
+<li><span class="item-title">ヘモグロビン</span><span class="item-text">赤血球に含まれ、酸素を運ぶ</span></li>
+<li><span class="item-title">骨格・筋肉</span><span class="item-text">頭蓋骨、顔面骨、表情筋、咀嚼筋、頸部筋を確認。顔面処置では筋肉の走行とリンパの流れが重要</span></li>
+<li><span class="item-title">感覚器</span><span class="item-text">視覚、聴覚、嗅覚、味覚、皮膚感覚を区別。皮膚感覚は触圧覚、温覚、冷覚、痛覚に整理</span></li>
+<li><span class="item-title">アドレナリン</span><span class="item-text">心拍数と血圧を上げる</span></li>
+</ul>
+<h2>皮膚構造・汗腺</h2>
+<ul>
+<li><span class="item-title">表皮</span><span class="item-text">最外層。<span class="num">角化</span>が行われ、<span class="num">ケラチン</span>を含む</span></li>
+<li><span class="item-title">真皮</span><span class="item-text">コラーゲンと<span class="num">エラスチン</span>を含み、<span class="num">血管と神経</span>が通る</span></li>
+<li><span class="item-title">エクリン腺</span><span class="item-text">全身に分布し、体温調節に関与する</span></li>
+<li><span class="item-title">毛髪の構造</span><span class="item-text"><span class="num">毛小皮・毛皮質・毛髄質</span>からなる。毛皮質は<span class="num">メラニン色素</span>と<span class="num">ケラチン</span>を多く含み、色・弾力・強度に関係</span></li>
+<li><span class="item-title">毛周期</span><span class="item-text"><span class="num">成長期・退行期・休止期</span>を繰り返す。脱毛や発毛の問題では各期の特徴を区別する</span></li>
+<li><span class="item-title">皮膚付属器官</span><span class="item-text"><span class="num">毛、爪、汗腺、脂腺</span>を含む。脂腺は皮脂を分泌し、皮膚と毛髪の<span class="num">保護に関与</span></span></li>
+<li><span class="item-title">皮膚疾患</span><span class="item-text">湿疹、接触皮膚炎、白癬、疥癬、膿痂疹、円形脱毛症を区別。感染性疾患は施術可否と衛生措置に注意</span></li>
+<li><span class="item-title">アポクリン腺</span><span class="item-text">腋窩に分布し、分泌物が臭いの原因となる</span></li>
+</ul><div class="trap box"><span class="num">【混同注意】</span>エクリン腺は体温調節、アポクリン腺は臭いとの関係を区別する</div>
+<h2>精神衛生</h2>
+<ul>
+<li><span class="item-title">投射</span><span class="item-text">自分の感情を相手が抱いていると思い込む</span></li>
+<li><span class="item-title">合理化</span><span class="item-text">失敗や不満にもっともらしい理由を付ける</span></li>
+</ul></div></details>
+<details open=""><summary>4．香粧品化学（5問）</summary><div class="sec"><h2>パーマネントウェーブ剤</h2>
+<ul>
+<li><span class="item-title">1液 還元剤</span><span class="item-text"><span class="num">シスチン結合を切断</span>する。<span class="num">チオグリコール酸、システイン</span></span></li>
+<li><span class="item-title">2液 酸化剤</span><span class="item-text"><span class="num">切断したシスチン結合を再結合して固定</span>する。<span class="num">臭素酸ナトリウム、過酸化水素</span></span></li>
+</ul><div class="trap box"><span class="num">【混同注意】</span>1液は還元して結合を切り、2液は酸化して再結合・固定する</div>
+<h2>成分と役割</h2>
+<ul>
+<li><span class="item-title">スクワラン</span><span class="item-text">油性成分。皮膚や毛髪の柔軟・保護に用いる</span></li>
+<li><span class="item-title">ワセリン・パラフィン</span><span class="item-text">鉱物性油分</span></li>
+<li><span class="item-title">グリセリン</span><span class="item-text">保湿剤</span></li>
+<li><span class="item-title">ステアリン酸ナトリウム</span><span class="item-text">石けんの成分となる界面活性剤</span></li>
+<li><span class="item-title">パラベン</span><span class="item-text">防腐剤</span></li>
+<li><span class="item-title">トコフェロール</span><span class="item-text">酸化防止剤。ビタミンE</span></li>
+<li><span class="item-title">酸・アルカリ</span><span class="item-text">pH7が中性。<span class="num">酸性は収</span><span class="num">れん</span><span class="num">・引き締め</span>、アルカリ性は毛髪膨潤や汚れ除去に関係。強酸・強アルカリは皮膚刺激に注意</span></li>
+<li><span class="item-title">界面活性剤</span><span class="item-text">洗浄、乳化、分散、可溶化、起泡に関与。陰イオン、陽イオン、非イオン、両性を区別</span></li>
+<li><span class="item-title">染毛剤</span><span class="item-text">酸化染毛剤は<span class="num">酸化染料と酸化剤で発色</span>。皮膚障害やアレルギー防止のためパッチテストが重要</span></li>
+<li><span class="item-title">脱色剤</span><span class="item-text"><span class="num">過酸化水素</span>などにより<span class="num">メラニン色素を酸化分解して明るく</span>する。毛髪損傷と頭皮刺激に注意</span></li>
+<li><span class="item-title">品質・安全性</span><span class="item-text">化粧品は安定性、微生物汚染防止、表示、使用期限、保存方法を確認。変色・異臭・分離があるものは使用しない</span></li>
+</ul></div></details>
+<details open=""><summary>5．文化論 ＆ 理容技術理論（15問）</summary><div class="sec"><h2>文化論</h2>
+<ul>
+<li><span class="item-title">藤原采女亮</span><span class="item-text">髪結い職人の祖</span></li>
+<li><span class="item-title">小倉虎吉</span><span class="item-text">横浜で最初に西洋理髪店を開業</span></li>
+<li><span class="item-title">片山哲</span><span class="item-text">理容師法成立時（昭和22年）の総理大臣</span></li>
+<li><span class="item-title">古代・中世</span><span class="item-text">髪型は身分、年齢、性別、儀礼と結びつく。冠、烏帽子、髷などが出題対象</span></li>
+<li><span class="item-title">江戸時代</span><span class="item-text">男性は月代と髷、女性は島田髷など。髪結い職人の発達と理容業の前史を押さえる</span></li>
+<li><span class="item-title">明治時代</span><span class="item-text">断髪令以後、西洋理髪が普及。散髪、洋髪、西洋式理髪店が近代理容の基礎</span></li>
+<li><span class="item-title">大正・昭和</span><span class="item-text">電気バリカン、パーマ、衛生制度、理容師法の整備により近代的な理容業へ発展</span></li>
+<li><span class="item-title">戦後〜現代</span><span class="item-text">理容師法、管理理容師制度、消毒・衛生管理、ヘアファッションの多様化が重要</span></li>
+</ul>
+<h2>カッティング</h2>
+<ul>
+<li><span class="item-title">運行角度</span><span class="item-text">頭皮に対して、はさみを進めていく角度</span></li>
+<li><span class="item-title">切断角度</span><span class="item-text">刃と頭皮の間の角度</span></li>
+</ul><div class="trap box"><span class="num">【混同注意】</span>運行角度は、はさみを進める角度。切断角度は、刃と頭皮の間の角度</div><ul>
+<li><span class="item-title">クリッパー</span><span class="item-text">一定の圧力を保ちながら滑らせる</span></li>
+<li><span class="item-title">色彩のグラデーション</span><span class="item-text">裾が最も短く白く、上に行くほど長く黒くなる</span></li>
+<li><span class="item-title">整髪</span><span class="item-text">ドライヤー、ブラシ、整髪料で毛流・ボリューム・面を整える。根元の方向づけと冷風固定がポイント</span></li>
+<li><span class="item-title">パーマ</span><span class="item-text">ロッド選定、巻き方、薬剤塗布、放置時間、2液固定を理解。過膨潤・過還元は損傷の原因</span></li>
+<li><span class="item-title">染毛</span><span class="item-text">カウンセリング、薬剤選定、塗布順序、放置時間、<span class="num">乳化</span>、シャンプーを確認。既染部と新生部の差に注意</span></li>
+<li><span class="item-title">器具操作</span><span class="item-text">はさみ、くし、クリッパー、かみそりは安全保持・角度・圧力・姿勢が重要。刃物は落下、接触、消毒不足を防ぐ</span></li>
+</ul>
+<h2>シェービング</h2>
+<ul>
+<li><span class="item-title">かみそりの角度</span><span class="item-text">皮膚面に対して<span class="num">25〜30度</span></span></li>
+<li><span class="item-title">順序</span><span class="item-text">最初は毛流に沿う<span class="num">順剃り</span>から行う</span></li>
+<li><span class="item-title">顔面処置</span><span class="item-text">皮膚状態確認、蒸しタオル、シェービング、ふき取り、整肌の順。禁忌は炎症、傷、強い日焼け、感染性皮膚疾患</span></li>
+</ul>
+<h2>シャンプー</h2>
+<ul>
+<li><span class="item-title">バックシャンプー</span><span class="item-text">首や腰の負担が少なく、顔に水がかかりにくい</span></li>
+<li><span class="item-title">シャンプー</span><span class="item-text">予洗いで汚れを浮かせ、泡で頭皮と毛髪を洗う。すすぎ残しは皮膚刺激・かゆみの原因</span></li>
+</ul></div></details>
+<footer>理容師国家試験 筆記試験 完全対策要点</footer>
+</main>
+<script src="glossaryData.js?v=3.0.188"></script>
+<script src="glossaryQuizData.js?v=3.0.188"></script>
+<script src="cultureManagementData.js?v=3.0.188"></script>
+<script src="comprehensiveSupplementData.js?v=3.0.188"></script>
+<script src="dictionaryPage.js?v=3.0.188"></script>
+</body>
+</html>

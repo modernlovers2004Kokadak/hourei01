@@ -1,10 +1,37 @@
-const CACHE_PREFIX='riyoshi-lawbook-';
-const APP_VERSION='4.0.64';
-const CACHE=CACHE_PREFIX+'v4-0-63';
-const LEGACY_CACHE_PREFIXES=['riyo-kakomon-','riyoushi-9laws-final-'];
-const VERSION_QUERY=`?v=${APP_VERSION}`;
-const ASSETS=['./','./index.html',`./index.html${VERSION_QUERY}`,`./style.css${VERSION_QUERY}`,`./app.js${VERSION_QUERY}`,`./lawAudit.js${VERSION_QUERY}`,`./confirmedAuditData.js${VERSION_QUERY}`,`./officialQuestionsData.js${VERSION_QUERY}`,`./supplementaryQuestionsData.js${VERSION_QUERY}`,`./lawArticleData.js${VERSION_QUERY}`,`./commercialLawData.js${VERSION_QUERY}`,`./lawMasterData.js${VERSION_QUERY}`,`./manifest.webmanifest${VERSION_QUERY}`,`./icon-180.png${VERSION_QUERY}`,`./icon-192.png${VERSION_QUERY}`,`./icon-512.png${VERSION_QUERY}`,`./分野別問題/data.js${VERSION_QUERY}`,`./preview.html${VERSION_QUERY}`];
-self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)));self.skipWaiting()});
-self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>(key.startsWith(CACHE_PREFIX)&&key!==CACHE)||LEGACY_CACHE_PREFIXES.some(prefix=>key.startsWith(prefix))).map(key=>caches.delete(key)))).then(()=>self.clients.claim()))});
-self.addEventListener('message',event=>{if(event.data?.type==='SKIP_WAITING')self.skipWaiting()});
-self.addEventListener('fetch',event=>{if(event.request.method!=='GET')return;event.respondWith(fetch(event.request).then(response=>{if(response.ok&&event.request.url.startsWith(self.location.origin)){const copy=response.clone();caches.open(CACHE).then(cache=>cache.put(event.request,copy))}return response}).catch(error=>caches.match(event.request).then(found=>{if(found)return found;if(event.request.mode==='navigate')return caches.match('./index.html');throw error})))});
+const CACHE_PREFIX='riyoshi-glossary-';
+const CACHE=CACHE_PREFIX+'v3.0.191-20260803';
+const ASSETS=['./','./index.html','./infection-classification-guide.html','./infectionDiseaseData.js?v=3.0.190','./taisaku-youten.html','./dictionaryPage.js?v=3.0.190','./style.css?v=3.0.191','./manifest.webmanifest','./glossaryData.js?v=3.0.190','./glossaryQuizData.js?v=3.0.190','./cultureManagementData.js?v=3.0.190','./comprehensiveSupplementData.js?v=3.0.190','./glossaryApp.js?v=3.0.191','./apple-touch-icon.png','./icon-192.png','./icon-512.png','./favicon-32.png'];
+self.addEventListener('install',event=>{
+  event.waitUntil((async()=>{
+    const cache=await caches.open(CACHE);
+    await Promise.all(ASSETS.map(async path=>{
+      const url=new URL(path,self.registration.scope).href;
+      const response=await fetch(new Request(url,{cache:'reload'}));
+      if(!response.ok)throw new Error(`Failed to cache ${path}`);
+      await cache.put(url,response);
+    }));
+    await self.skipWaiting();
+  })());
+});
+self.addEventListener('activate',event=>{
+  event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith(CACHE_PREFIX)&&key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim()));
+});
+self.addEventListener('fetch',event=>{
+  if(event.request.method!=='GET')return;
+  const url=new URL(event.request.url);
+  if(url.origin!==self.location.origin)return;
+  if(event.request.mode==='navigate'){
+    event.respondWith(fetch(new Request(event.request,{cache:'no-store'})).then(response=>{
+      if(response&&response.ok){const copy=response.clone();caches.open(CACHE).then(cache=>cache.put(event.request,copy));}
+      return response;
+    }).catch(()=>caches.match(event.request).then(cached=>cached||caches.match(new URL('./index.html',self.registration.scope).href))));
+    return;
+  }
+  event.respondWith(caches.match(event.request).then(cached=>{
+    if(cached)return cached;
+    return fetch(event.request).then(response=>{
+      if(response&&response.ok){const copy=response.clone();caches.open(CACHE).then(cache=>cache.put(event.request,copy));}
+      return response;
+    }).catch(()=>event.request.mode==='navigate'?caches.match('./index.html'):undefined);
+  }));
+});
