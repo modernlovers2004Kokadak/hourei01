@@ -198,7 +198,7 @@ body{font-size:var(--font-lv4);}
 .today-feature-card .home-feature-card{padding-right:124px!important}
 .today-home-actions{position:absolute;z-index:3;top:50%;right:10px;display:grid;grid-template-columns:repeat(2,44px);gap:4px;align-items:center;transform:translateY(-50%)}
 .today-home-mistake,.today-home-actions .today-home-bookmark{position:relative;top:auto;right:auto;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;width:44px;height:58px;padding:0;border:0;border-radius:10px;background:transparent;color:inherit;font:inherit;line-height:1;transform:none;cursor:pointer;-webkit-tap-highlight-color:rgba(255,255,255,.2)}
-.today-home-mistake .certainty-icon{flex:0 0 27px;width:27px;height:27px;margin:0;background:#ed3434;color:#fff;font-size:var(--font-lv3)}
+.today-home-mistake .certainty-icon{flex:0 0 27px;width:27px;height:27px;margin:0 0 3px;background:#ed3434;color:#fff;font-size:var(--font-lv3)}
 .today-home-actions .today-home-bookmark-icon{display:block;height:30px;font-size:var(--font-exception-home-icon);line-height:30px;transform:none}
 .today-home-mistake-count,.today-home-actions .today-home-bookmark-count{position:static;display:grid;place-items:center;min-width:25px;height:25px;margin-top:2px;padding:0 6px;border-radius:999px;background:#fff;font-size:var(--font-lv5);font-weight:500;line-height:1;text-align:center;transform:none;pointer-events:none}
 .today-home-mistake-count{color:#c92121}
